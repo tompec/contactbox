@@ -1,0 +1,26 @@
+{
+  "name": "contactbox",
+  "version": "0.0.0",
+  "description": "Easy to use contact form",
+  "main": "contactbox.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tompec/contactbox.git"
+  },
+  "keywords": [
+    "contact",
+    "form",
+    "chat",
+    "box",
+    "modal"
+  ],
+  "author": "Thomas PETRACCO <hi@thomaspetracco.com> (https://www.thomaspetracco.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tompec/contactbox/issues"
+  },
+  "homepage": "https://github.com/tompec/contactbox#readme"
+}
