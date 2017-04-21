@@ -49,7 +49,7 @@
             if (_.validate(email, message) == false)
                 return false;
             
-            _.request(email, message);
+            _.request(email.value, message.value);
         });
     }
 
