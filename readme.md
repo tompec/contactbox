@@ -14,8 +14,16 @@ Add the following script:
 ```javascript
 new ContactBox({
     endpoint: 'http://yourwebsite.com/post.php', // Define your endpoint for the POST request
-    title: 'Send us a message', // optional, the message on the top of the box
-    successMsg: 'Thanks, your message has been sent!', // optional, the success message
+    language: {
+        title: 'Send us a message', // optional
+        emailPlaceholder: 'Your email', // optional
+        messagePlaceholder: 'Your message', // optional
+        emptyEmail: 'Please enter your email', // optional
+        emptyMessage: 'Please enter your message', // optional
+        invalidEmail: 'Please enter a valid email', // optional
+        successMsg: 'Thanks, your message has been sent!', // optional
+        buttonText: 'Send your message' // optional
+    }
 });
 ```
 

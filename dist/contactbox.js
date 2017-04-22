@@ -8,10 +8,18 @@
         this.form = null;
 
         var defaults = {
-            title: 'Send us a message',
             endpoint: 'submit.php',
-            successMsg: 'Thanks, your message has been sent!'
-        }
+            language: {
+                title: 'Send us a message',
+                emailPlaceholder: 'Your email',
+                messagePlaceholder: 'Your message',
+                emptyEmail: 'Please enter your email',
+                emptyMessage: 'Please enter your message',
+                invalidEmail: 'Please enter a valid email',
+                successMsg: 'Thanks, your message has been sent!',
+                buttonText: 'Send your message'
+            }
+        };
 
         if (arguments[0] && typeof arguments[0] === "object")
             this.options = extendDefaults(defaults, arguments[0]);
@@ -63,7 +71,7 @@
         xhr.onload = function () {
             if (xhr.status === 200) {
                 emptyFields('form-input');
-                document.getElementsByClassName('success-msg')[0].innerHTML = _.options.successMsg;
+                document.getElementsByClassName('success-msg')[0].innerHTML = _.options.language.successMsg;
             }
             else {
                 alert('An error occured, please try again later');
@@ -78,19 +86,19 @@
 
         if (email.value == '')
         {
-            email.nextSibling.innerHTML = 'Please enter your email';
+            email.nextSibling.innerHTML = this.options.language.emptyEmail;
             return false;
         }
 
         if (regex.test(email.value) == false)
         {
-            email.nextSibling.innerHTML = 'Please enter a valid email';
+            email.nextSibling.innerHTML = this.options.language.invalidEmail;
             return false;
         }
 
         if (message.value == '')
         {
-            message.nextSibling.innerHTML = 'Please enter a message';
+            message.nextSibling.innerHTML = this.options.language.emptyMessage;
             return false;
         }
 
@@ -98,17 +106,29 @@
     };
 
     // Private Methods
-    function extendDefaults(source, properties)
+    function extendDefaults(defaults, properties)
     {
-        var property;
-        for (property in properties)
+        for (var prop in defaults)
         {
-            if (properties.hasOwnProperty(property))
+            if (properties.hasOwnProperty(prop))
             {
-                source[property] = properties[property];
+                if (typeof defaults[prop] === 'object')
+                {
+                    for (subprop in defaults[prop])
+                    {
+                        if (properties[prop].hasOwnProperty(subprop))
+                        {
+                            defaults[prop][subprop] = properties[prop][subprop];
+                        }
+                    }
+                }
+                else
+                {
+                    defaults[prop] = properties[prop];
+                }
             }
         }
-        return source;
+        return defaults;
     }
 
     function buildOut()
@@ -125,9 +145,9 @@
         this.box.appendChild(header);
 
         this.link = document.createElement('a');
-        this.link.title = this.options.title;
+        this.link.title = this.options.language.title;
         this.link.href = "#";
-        this.link.innerHTML = this.options.title + '<span class="chevron">&#9650;</span>';
+        this.link.innerHTML = this.options.language.title + '<span class="chevron">&#9650;</span>';
         header.appendChild(this.link);
 
         this.content = document.createElement("div");
@@ -141,18 +161,18 @@
         var email = document.createElement("input");
         email.type = "email";
         email.className = "form-input";
-        email.placeholder = "Your email";
+        email.placeholder = this.options.language.emailPlaceholder;
         email.name = "email";
 
         var message = document.createElement("textarea");
         message.className = "form-input";
-        message.placeholder = "Your message";
+        message.placeholder = this.options.language.messagePlaceholder;
         message.rows = "7";
         message.name = "message";
 
         var submit = document.createElement("input");
         submit.type = "submit";
-        submit.value = "Send your message";
+        submit.value = this.options.language.buttonText;
 
         var errorMsg1 = document.createElement("div");
         errorMsg1.className = "error-msg";
