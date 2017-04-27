@@ -3,6 +3,8 @@ ContactBox is an easy to use contact form modal that stays in the corner of your
 It allows your visitors to contact you easily from any page of your website.  
 This plugin is in javascript (no need of jQuery) and needs you to handle the backend side.
 
+![Preview](https://s3-us-west-1.amazonaws.com/contactbox.io/preview.gif)
+
 ## How to use:
 `npm install contactbox`
 
