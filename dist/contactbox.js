@@ -3,12 +3,19 @@
     this.ContactBox = function() {
 
         this.box = null;
-        this.content = null;
+        this.button = null;
         this.link = null;
+        this.content = null;
+        this.header = null;
+        this.cross = null;
         this.form = null;
 
         var defaults = {
             endpoint: 'submit.php',
+            token: {
+                name: null,
+                value: null
+            },
             language: {
                 title: 'Send us a message',
                 emailPlaceholder: 'Your email',
@@ -35,13 +42,14 @@
 
             e.preventDefault();
 
-            var chevron = document.getElementsByClassName('chevron');
+            _.content.classList.toggle('active');
+            _.box.classList.toggle('downsized');
+        });
 
-            if (chevron[0].innerHTML == "▲")
-                chevron[0].innerHTML = "&#9660;";
-            else
-                chevron[0].innerHTML = "&#9650;";
-            
+        this.cross.addEventListener('click', function(e) {
+
+            e.preventDefault();
+
             _.content.classList.toggle('active');
             _.box.classList.toggle('downsized');
         });
@@ -49,10 +57,10 @@
         this.form.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            var email = document.getElementsByName("email")[0],
-            message = document.getElementsByName("message")[0];
+            var email = document.getElementById("contactbox__email"),
+            message = document.getElementById("contactbox__message");
 
-            emptyFields('error-msg');
+            emptyFields('contactbox__error-msg');
 
             if (_.validate(email, message) == false)
                 return false;
@@ -71,13 +79,13 @@
         xhr.onload = function () {
             if (xhr.status === 200) {
                 emptyFields('form-input');
-                document.getElementsByClassName('success-msg')[0].innerHTML = _.options.language.successMsg;
+                document.getElementById('contactbox__success-msg').innerHTML = _.options.language.successMsg;
             }
             else {
                 alert('An error occured, please try again later');
             }
         };
-        xhr.send(encodeURI('email=' + email + '&message=' + message));
+        xhr.send(encodeURI('email=' + email + '&message=' + message + '&' + _.options.token.name + '=' + _.options.token.value));
     };
 
     ContactBox.prototype.validate = function (email, message)
@@ -140,48 +148,76 @@
         this.box = document.createElement("div");
         this.box.className = "contactbox downsized";
 
-        var header = document.createElement("div");
-        header.className = "contactbox__header";
-        this.box.appendChild(header);
+        this.button = document.createElement('div');
+        this.button.className = "contactbox__button";
+        this.box.appendChild(this.button);
 
         this.link = document.createElement('a');
         this.link.title = this.options.language.title;
         this.link.href = "#";
-        this.link.innerHTML = this.options.language.title + '<span class="chevron">&#9650;</span>';
-        header.appendChild(this.link);
+        this.link.id = "contactbox__button-link";
+        this.button.appendChild(this.link);
+
+        var linkTitle =  document.createElement('span');
+        linkTitle.innerHTML = this.options.language.title;
+        linkTitle.className = "contactbox__button-title";
+        this.link.appendChild(linkTitle);
+
+        var linkIcon =  document.createElement('span');
+        linkIcon.innerHTML = '<i class="icon-comment"></i>';
+        linkIcon.className = "contactbox__button-icon";
+        this.link.appendChild(linkIcon);
 
         this.content = document.createElement("div");
         this.content.className = "contactbox__content";
         this.box.appendChild(this.content);
 
+        this.header = document.createElement("div");
+        this.header.className = "contactbox__header";
+        this.content.appendChild(this.header);
+
+        var headertext = document.createElement("div");
+        headertext.className = "contactbox__header-title";
+        headertext.innerHTML = this.options.language.title;
+        this.header.appendChild(headertext);
+
+        this.cross = document.createElement("a");
+        this.cross.id = "contactbox__header-cross";
+        this.cross.href = "#";
+        this.cross.innerHTML = '<icon class="icon-cross"></i>';
+        this.header.appendChild(this.cross);
+
         this.form = document.createElement("form");
         this.form.method = "post";
         this.form.action = this.options.endpoint;
+        this.form.className = "contactbox__form";
 
         var email = document.createElement("input");
         email.type = "email";
         email.className = "form-input";
         email.placeholder = this.options.language.emailPlaceholder;
         email.name = "email";
+        email.id = "contactbox__email";
 
         var message = document.createElement("textarea");
         message.className = "form-input";
         message.placeholder = this.options.language.messagePlaceholder;
         message.rows = "7";
         message.name = "message";
+        message.id = "contactbox__message";
 
         var submit = document.createElement("input");
         submit.type = "submit";
         submit.value = this.options.language.buttonText;
 
         var errorMsg1 = document.createElement("div");
-        errorMsg1.className = "error-msg";
+        errorMsg1.className = "contactbox__error-msg";
 
         var errorMsg2 = document.createElement("div");
-        errorMsg2.className = "error-msg";
+        errorMsg2.className = "contactbox__error-msg";
 
         var successMsg = document.createElement("div");
-        successMsg.className = "success-msg";
+        successMsg.id = "contactbox__success-msg";
 
         this.form.appendChild(email);
         this.form.appendChild(errorMsg1);

@@ -4,31 +4,64 @@
     position: fixed;
     bottom: 10px;
     right: 10px;
+    width: calc(100% - 20px);
     border: 1px solid #ccc;
-    width: 400px;
 }
 
-@media (max-width: 500px) {
-    .contactbox {display: none}
+@media (min-width: 500px) {
+    .contactbox {
+        width: 400px;
+    }
 }
 
-.contactbox.downsized {width: auto}
-
-.contactbox__header {
-    padding: 10px;
-    text-transform: uppercase;
-    font-size: 18px;
-    font-weight: 400;
-    background-color: grey;
+.contactbox.downsized {
+    width: auto;
+    border: none;
+    background: transparent;
 }
 
-.contactbox__header a {
-    color: #fff;
+.contactbox a,
+.contactbox a:link,
+.contactbox a:visited,
+.contactbox a:hover,
+.contactbox a:active {
+    color: #2CBBBB;
+}
+
+.contactbox__button {
+    display: none;
+    padding: 5px;
+}
+
+.contactbox.downsized .contactbox__button {
+    display: block;
+}
+
+#contactbox__button-link {
     text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.contactbox__button-title {
+    display: none;
+    font-size: 18px;
     margin-right: 15px;
 }
 
-.contactbox__header .chevron {float: right}
+@media (min-width: 500px) {
+    .contactbox__button-title {
+        display: inline;
+    }
+}
+
+.contactbox__header {
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #2CBBBB;
+}
 
 .contactbox__content {
     display: none;
@@ -37,11 +70,11 @@
 
 .contactbox__content.active {display: block}
 
-.contactbox form {margin: 0}
+.contactbox__form {margin: 0}
 
-.contactbox input[type="text"],
-.contactbox input[type="email"],
-.contactbox textarea {
+.contactbox__form input[type="text"],
+.contactbox__form input[type="email"],
+.contactbox__form textarea {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -57,13 +90,13 @@
     height: 45px;
 }
 
-.contactbox textarea {
+.contactbox__form textarea {
     height: auto;
     resize: none;
     overflow: hidden;
 }
 
-.contactbox input[type="submit"] {
+.contactbox__form input[type="submit"] {
     background-color: #2CBBBB;
     border: 1px solid #27A0A0;
     display: inline-block;
@@ -74,19 +107,85 @@
     text-decoration: none;
     text-transform: uppercase;
 }
-.contactbox input[type="submit"]:hover {
+.contactbox__form input[type="submit"]:hover {
     background: linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
     background-color: #34CACA;
 }
 
-.contactbox .error-msg {
+.contactbox__error-msg {
     color: red;
     font-size: 0.8em;
     margin: 0 15px 10px;
 }
 
-.contactbox .success-msg {
+#contactbox__success-msg {
     color: green;
     font-size: 0.8em;
     margin: 0 15px 10px;
+}
+
+.contactbox [class*=icon-] {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    font-style: normal;
+    text-align: left;
+    text-indent: -9999px;
+    direction: ltr;
+}
+
+.contactbox [class*=icon-]:after,
+.contactbox [class*=icon-]:before {
+    content: '';
+    pointer-events: none;
+}
+
+.contactbox .icon-comment {
+    width: 30px;
+    height: 20px;
+    box-shadow: inset 0 0 0 32px;
+    border-radius: 4px;
+    margin: 5px 2px 9px
+}
+
+.contactbox .icon-comment:before {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    box-shadow: inset 0 0 0 32px;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    bottom: -4px;
+    left: 6px;
+}
+
+.contactbox .icon-cross {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+}
+
+.contactbox .icon-cross:before {
+    width: 20px;
+    height: 2px;
+}
+
+.contactbox .icon-cross:after,
+.contactbox .icon-cross:before {
+    box-shadow: inset 0 0 0 32px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+.contactbox .icon-cross:after {
+    height: 20px;
+    width: 2px;
 }
