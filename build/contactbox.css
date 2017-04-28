@@ -108,7 +108,6 @@
     text-transform: uppercase;
 }
 .contactbox__form input[type="submit"]:hover {
-    background: linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
     background-color: #34CACA;
 }
 
