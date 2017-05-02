@@ -12,6 +12,7 @@
 
         var defaults = {
             endpoint: 'submit.php',
+            position: 'right',
             token: {
                 name: null,
                 value: null
@@ -146,7 +147,7 @@
         docFrag = document.createDocumentFragment();
 
         this.box = document.createElement("div");
-        this.box.className = "contactbox downsized";
+        this.box.className = "contactbox downsized " + this.options.position;
 
         this.button = document.createElement('div');
         this.button.className = "contactbox__button";

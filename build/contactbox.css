@@ -3,9 +3,16 @@
     background: #FFFFFF;
     position: fixed;
     bottom: 10px;
-    right: 10px;
     width: calc(100% - 20px);
     border: 1px solid #ccc;
+}
+
+.contactbox.right {
+    right: 10px;
+}
+
+.contactbox.left {
+    left: 10px;
 }
 
 @media (min-width: 500px) {
