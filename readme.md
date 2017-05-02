@@ -36,5 +36,4 @@ new ContactBox({
 ```
 
 ## In development
-- Option to change the position of the modal
 - Different themes
