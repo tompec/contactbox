@@ -18,6 +18,7 @@ Add the following script:
 ```javascript
 new ContactBox({
     endpoint: 'http://yourwebsite.com/post.php', // Define your endpoint for the POST request
+    position: 'right', // optional, possible values are 'left' or 'right'
     token: { // optional
         name: '_token',
         value: 'token'
