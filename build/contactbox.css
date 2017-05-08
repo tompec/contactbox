@@ -5,6 +5,7 @@
     bottom: 10px;
     width: calc(100% - 20px);
     border: 1px solid #ccc;
+    z-index: 9999;
 }
 
 .contactbox.right {
