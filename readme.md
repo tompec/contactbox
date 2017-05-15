@@ -11,7 +11,7 @@ This plugin is in javascript (no need of jQuery) and needs you to handle the bac
 
 Include the contactbox.min.css and contactbox.min.js files in your page.
 
-Create an endpoint in your backend. The form is sent by a POST request with the parameters `email` and `message`.  
+Create an endpoint in your backend. The form is sent by a POST request with the parameters `email`, `message` and `current_page`.  
 A token options is also available if your application needs to pass this parameter to the backend.
 
 Add the following script:
