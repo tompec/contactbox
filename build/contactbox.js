@@ -86,7 +86,7 @@
                 alert('An error occured, please try again later');
             }
         };
-        xhr.send(encodeURI('email=' + email + '&message=' + message + '&' + _.options.token.name + '=' + _.options.token.value));
+        xhr.send(encodeURI('email=' + email + '&message=' + message + '&' + _.options.token.name + '=' + _.options.token.value + '&current_page=' + window.location.href));
     };
 
     ContactBox.prototype.validate = function (email, message)
