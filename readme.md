@@ -19,6 +19,7 @@ Add the following script:
 new ContactBox({
     endpoint: 'http://yourwebsite.com/post.php', // Define your endpoint for the POST request
     position: 'right', // optional, possible values are 'left' or 'right'
+    email: 'email@example.com', // optional, populate the email field if you already know user's email
     token: { // optional
         name: '_token',
         value: 'token'

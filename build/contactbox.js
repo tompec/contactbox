@@ -13,6 +13,7 @@
         var defaults = {
             endpoint: 'submit.php',
             position: 'right',
+            email: null,
             token: {
                 name: null,
                 value: null
@@ -96,12 +97,14 @@
         if (email.value == '')
         {
             email.nextSibling.innerHTML = this.options.language.emptyEmail;
+            reconstructEmailField();
             return false;
         }
 
         if (regex.test(email.value) == false)
         {
             email.nextSibling.innerHTML = this.options.language.invalidEmail;
+            reconstructEmailField();
             return false;
         }
 
@@ -115,13 +118,20 @@
     };
 
     // Private Methods
+    function reconstructEmailField()
+    {
+        var email = document.getElementById("contactbox__email");
+        email.type = "email";
+        email.className = "form-input";
+    }
+
     function extendDefaults(defaults, properties)
     {
         for (var prop in defaults)
         {
             if (properties.hasOwnProperty(prop))
             {
-                if (typeof defaults[prop] === 'object')
+                if (typeof defaults[prop] === 'object' && defaults[prop] !== null)
                 {
                     for (subprop in defaults[prop])
                     {
@@ -194,11 +204,20 @@
         this.form.className = "contactbox__form";
 
         var email = document.createElement("input");
-        email.type = "email";
         email.className = "form-input";
         email.placeholder = this.options.language.emailPlaceholder;
         email.name = "email";
         email.id = "contactbox__email";
+
+        if (this.options.email !== null)
+        {
+            email.type = "hidden";
+            email.value = this.options.email;
+        }
+        else
+        {
+            email.type = "email";
+        }
 
         var message = document.createElement("textarea");
         message.className = "form-input";
