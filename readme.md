@@ -4,7 +4,7 @@ It allows your visitors to contact you easily from any page of your website.
 This plugin is in javascript (no need of jQuery) and needs you to handle the backend side.
 
 ## Demo
-[Demo](https://tompec.github.io/contactbox/)
+A live demo is available [here](https://www.dronejobs.co)
 
 ## How to use
 `npm install contactbox`
@@ -12,7 +12,7 @@ This plugin is in javascript (no need of jQuery) and needs you to handle the bac
 Include the contactbox.min.css and contactbox.min.js files in your page.
 
 Create an endpoint in your backend. The form is sent by a POST request with the parameters `email`, `message` and `current_page`.  
-A token options is also available if your application needs to pass this parameter to the backend.
+A token option is also available if your application needs to pass this parameter to the backend.
 
 Add the following script:
 ```javascript
@@ -37,5 +37,12 @@ new ContactBox({
 });
 ```
 
-## In development
-- Different themes
+## Available Method
+You can show or hide ContactBox with the `toggle` method
+```javascript
+var ContactBox = new ContactBox({
+    endpoint: 'http://yourwebsite.com/post.php'
+});
+
+ContactBox.toggle();
+``` 

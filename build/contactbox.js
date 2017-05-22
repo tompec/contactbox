@@ -71,6 +71,12 @@
         });
     }
 
+    ContactBox.prototype.toggle = function()
+    {
+        this.content.classList.toggle('active');
+        this.box.classList.toggle('downsized');
+    }
+
     ContactBox.prototype.request = function (email, message)
     {
         var _ = this,
