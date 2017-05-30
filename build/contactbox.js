@@ -27,7 +27,8 @@
                 invalidEmail: 'Please enter a valid email',
                 successMsg: 'Thanks, your message has been sent!',
                 buttonText: 'Send your message'
-            }
+            },
+            color: null
         };
 
         if (arguments[0] && typeof arguments[0] === "object")
@@ -255,6 +256,15 @@
         this.content.appendChild(this.form);
 
         docFrag.appendChild(this.box);
+
+        if (this.options.color !== null)
+        {
+            this.link.style.color = this.options.color;
+            this.header.style.color = this.options.color;
+            this.cross.style.color = this.options.color;
+            submit.style.backgroundColor = this.options.color;
+            submit.style.border = "1px solid " + this.options.color;
+        }
 
         document.body.appendChild(docFrag);
     }

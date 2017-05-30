@@ -33,7 +33,8 @@ new ContactBox({
         invalidEmail: 'Please enter a valid email',
         successMsg: 'Thanks, your message has been sent!',
         buttonText: 'Send your message'
-    }
+    },
+    color: '#2CBBBB' // optional, change the theme color. Possible values are HEX color "#000000" or color name "black"
 });
 ```
 
