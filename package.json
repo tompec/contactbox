@@ -1,6 +1,6 @@
 {
   "name": "contactbox",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Easy to use contact form",
   "main": "contactbox.js",
   "scripts": {
