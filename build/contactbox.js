@@ -28,7 +28,8 @@
                 successMsg: 'Thanks, your message has been sent!',
                 buttonText: 'Send your message'
             },
-            color: null
+            color: null,
+            description: null
         };
 
         if (arguments[0] && typeof arguments[0] === "object")
@@ -204,6 +205,14 @@
         this.cross.href = "#";
         this.cross.innerHTML = '<icon class="icon-cross"></i>';
         this.header.appendChild(this.cross);
+
+        if (this.options.description !== null)
+        {
+            var description = document.createElement("div");
+            description.className = "contactbox__description";
+            description.innerHTML = this.options.description;
+            this.content.appendChild(description);
+        }
 
         this.form = document.createElement("form");
         this.form.method = "post";
