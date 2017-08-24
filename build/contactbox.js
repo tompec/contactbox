@@ -220,7 +220,6 @@
         this.form.className = "contactbox__form";
 
         var email = document.createElement("input");
-        email.className = "form-input";
         email.placeholder = this.options.language.emailPlaceholder;
         email.name = "email";
         email.id = "contactbox__email";
@@ -232,6 +231,7 @@
         }
         else
         {
+            email.className = "form-input";
             email.type = "email";
         }
 
