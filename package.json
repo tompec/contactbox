@@ -2,7 +2,7 @@
   "name": "contactbox",
   "version": "0.0.11",
   "description": "Easy to use contact form",
-  "main": "contactbox.js",
+  "main": "dist/contactbox.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
