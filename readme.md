@@ -34,7 +34,7 @@ new ContactBox({
         successMsg: 'Thanks, your message has been sent!',
         buttonText: 'Send your message'
     },
-    color: '#2CBBBB' // optional, change the theme color. Possible values are HEX color "#000000" or color name "black"
+    color: '#2CBBBB', // optional, change the theme color. Possible values are HEX color "#000000" or color name "black"
     description: "Send us an email and we'll try to answer asap!" // optional, display a small description before the form
 });
 ```
